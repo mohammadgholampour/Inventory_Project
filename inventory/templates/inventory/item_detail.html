@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ item.name }}</title>
+</head>
+<body>
+    <h1>{{ item.name }}</h1>
+    <p>{{ item.description }}</p>
+    <p>Quantity: {{ item.quantity }}</p>
+    <p>Price: {{ item.price }}</p>
+    <a href="{% url 'item_edit' item.pk %}">Edit</a>
+    <form action="{% url 'item_delete' item.pk %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Delete</button>
+    </form>
+    <a href="{% url 'item_list' %}">Back to List</a>
+</body>
+</html>
